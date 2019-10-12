@@ -1,4 +1,4 @@
-import {Enum} from('enumify-fork');
+import {Enum} from 'enumify-fork';
 
 export default class PromiseStatus {
     constructor(promise = null) {
