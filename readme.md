@@ -12,14 +12,14 @@ But what is the difference between this and standard `.then().catch()`? Answer i
 <template>
     <div>
         <button @click="load(1)" :class="{active:active===1}">Show first article</button>
-        <button @click="load(2)" :class="{active:active===1}">Show second article</button>
+        <button @click="load(2)" :class="{active:active===2}">Show second article</button>
         <p v-if="content.status === Status.pending">Loading...</p>
         <p v-else-if="content.status === Status.resolved">{{content.data}}</p>
         <p v-else-if="content.status === Status.rejected">Error while loading article</p>
     </div>
 </template>
 <script>
-import PromiseStatus from 'promise-status';
+import PromiseStatus from 'reactive-promise-status';
 
 export default {
     data(){

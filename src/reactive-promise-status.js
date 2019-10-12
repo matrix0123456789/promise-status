@@ -1,6 +1,6 @@
 import {Enum} from 'enumify-fork';
 
-export default class PromiseStatus {
+export default class ReactivePromiseStatus {
     constructor(promise = null) {
         this.promise = promise;
     }
@@ -8,20 +8,20 @@ export default class PromiseStatus {
     set promise(promise) {
         this.data = null;
         this.error = null;
-        this.status = PromiseStatus.Status.noPromise;
+        this.status = ReactivePromiseStatus.Status.noPromise;
         this._promise = null;
         if (promise) {
             this._promise = promise;
-            this.status = PromiseStatus.Status.pending;
+            this.status = ReactivePromiseStatus.Status.pending;
             promise.then(data => {
                 if (this._promise === promise) {
                     this.data = data;
-                    this.status = PromiseStatus.Status.resolved;
+                    this.status = ReactivePromiseStatus.Status.resolved;
                 }
             }, error => {
                 if (this._promise === promise) {
                     this.error = error;
-                    this.status = PromiseStatus.Status.resolved;
+                    this.status = ReactivePromiseStatus.Status.resolved;
                 }
             })
         }
@@ -32,6 +32,6 @@ export default class PromiseStatus {
     }
 }
 
-PromiseStatus.Status = class extends Enum {
+ReactivePromiseStatus.Status = class extends Enum {
 };
-PromiseStatus.Status.initEnum(['noPromise', 'pending', 'resolved', 'rejected']);
+ReactivePromiseStatus.Status.initEnum(['noPromise', 'pending', 'resolved', 'rejected']);
