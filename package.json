@@ -7,12 +7,5 @@
     "license": "MIT",
     "dependencies": {
         "enumify-fork": "^1.2.0"
-    },
-    "devDependencies": {
-        "fast-check": "^1.17.0",
-        "mocha": "^6.2.1"
-    },
-    "scripts": {
-        "test": "mocha tests"
     }
 }

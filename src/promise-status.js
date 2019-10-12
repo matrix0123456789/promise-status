@@ -1,6 +1,6 @@
-const {Enum} = require('enumify-fork');
+import {Enum} from('enumify-fork');
 
-class PromiseStatus {
+export default class PromiseStatus {
     constructor(promise = null) {
         this.promise = promise;
     }
@@ -35,4 +35,3 @@ class PromiseStatus {
 PromiseStatus.Status = class extends Enum {
 };
 PromiseStatus.Status.initEnum(['noPromise', 'pending', 'resolved', 'rejected']);
-module.exports = {default: PromiseStatus};
