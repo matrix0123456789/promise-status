@@ -41,3 +41,6 @@ export default {
 ```
 
 Note, that I created one object of type `PromiseStatus`, and in `load` method I changed its property `promise`. That is because if you set `content` as null and try to check `content.state` you will get exception. That's why there is 4th status `noPromise`
+
+# Read more
+https://thebugger.home.blog/2019/10/12/promises-in-vue-how-to-do-api-requests-correctly/
