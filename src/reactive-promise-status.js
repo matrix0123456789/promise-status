@@ -21,7 +21,7 @@ export default class ReactivePromiseStatus {
             }, error => {
                 if (this._promise === promise) {
                     this.error = error;
-                    this.status = ReactivePromiseStatus.Status.resolved;
+                    this.status = ReactivePromiseStatus.Status.rejected;
                 }
             })
         }
