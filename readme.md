@@ -1,3 +1,8 @@
+[![npm](https://badgen.net/npm/v/reactive-promise-status)](https://www.npmjs.com/package/reactive-promise-status)
+[![downloads](https://badgen.net/npm/dt/reactive-promise-status)](https://www.npmjs.com/package/reactive-promise-status)
+[![downloads](https://badgen.net/npm/license/reactive-promise-status)](https://www.npmjs.com/package/reactive-promise-status)
+[![downloads](https://badgen.net/npm/dependents/reactive-promise-status)](https://www.npmjs.com/package/reactive-promise-status)
+
 # Descrption
 
 This class is designet to be used with Vue.js
