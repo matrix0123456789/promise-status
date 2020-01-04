@@ -1,11 +1,26 @@
 {
     "name": "reactive-promise-status",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "src/reactive-promise-status.js",
     "repository": "https://github.com/matrix0123456789/reactive-promise-status",
     "author": "Mateusz Krawczyk",
     "license": "MIT",
     "dependencies": {
         "enumify-fork": "^1.2.0"
+    },
+    "devDependencies": {
+        "babel-core": "6.26.0",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "1.6.0",
+        "fast-check": "^1.16.0",
+        "mocha": "^6.2.0"
+    },
+    "scripts": {
+        "test": "mocha  --require babel-core/register tests"
+    },
+    "babel": {
+        "presets": [
+            "env"
+        ]
     }
 }
