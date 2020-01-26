@@ -2,6 +2,7 @@
 [![downloads](https://badgen.net/npm/dt/reactive-promise-status)](https://www.npmjs.com/package/reactive-promise-status)
 [![downloads](https://badgen.net/npm/license/reactive-promise-status)](https://www.npmjs.com/package/reactive-promise-status)
 [![downloads](https://badgen.net/npm/dependents/reactive-promise-status)](https://www.npmjs.com/package/reactive-promise-status)
+![Test](https://github.com/matrix0123456789/reactive-promise-status/workflows/Test/badge.svg)
 
 # Descrption
 
