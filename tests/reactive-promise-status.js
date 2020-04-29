@@ -2,8 +2,7 @@ const fc = require('fast-check');
 const assert = require('assert');
 import ReactivePromiseStatus from '../src/reactive-promise-status';
 
-require("babel-core/register");
-require("babel-polyfill");
+require("@babel/polyfill");
 
 function wait() {
     return new Promise((r) => setTimeout(r, 0));
