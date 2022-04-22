@@ -1,18 +1,23 @@
 import {Enum} from 'enumify-fork';
 
 export default class ReactivePromiseStatus {
-    constructor(promise = null) {
+    constructor(promise = null, keepOld = false) {
         this.promise = promise;
+        this.keepOld = keepOld;
     }
 
     set promise(promise) {
-        this.data = null;
-        this.error = null;
-        this.status = ReactivePromiseStatus.Status.noPromise;
+        if (!this.keepOld) {
+            this.data = null;
+            this.error = null;
+            this.status = ReactivePromiseStatus.Status.noPromise;
+        }
         this._promise = null;
         if (promise) {
             this._promise = promise;
-            this.status = ReactivePromiseStatus.Status.pending;
+            if (!this.keepOld) {
+                this.status = ReactivePromiseStatus.Status.pending;
+            }
             promise.then(data => {
                 if (this._promise === promise) {
                     this.data = data;

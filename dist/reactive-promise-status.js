@@ -32,10 +32,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var ReactivePromiseStatus = /*#__PURE__*/function () {
   function ReactivePromiseStatus() {
     var promise = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var keepOld = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
     _classCallCheck(this, ReactivePromiseStatus);
 
     this.promise = promise;
+    this.keepOld = keepOld;
   }
 
   _createClass(ReactivePromiseStatus, [{
@@ -43,14 +45,21 @@ var ReactivePromiseStatus = /*#__PURE__*/function () {
     set: function set(promise) {
       var _this = this;
 
-      this.data = null;
-      this.error = null;
-      this.status = ReactivePromiseStatus.Status.noPromise;
+      if (!this.keepOld) {
+        this.data = null;
+        this.error = null;
+        this.status = ReactivePromiseStatus.Status.noPromise;
+      }
+
       this._promise = null;
 
       if (promise) {
         this._promise = promise;
-        this.status = ReactivePromiseStatus.Status.pending;
+
+        if (!this.keepOld) {
+          this.status = ReactivePromiseStatus.Status.pending;
+        }
+
         promise.then(function (data) {
           if (_this._promise === promise) {
             _this.data = data;

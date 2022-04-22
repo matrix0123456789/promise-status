@@ -67,6 +67,30 @@ describe('changedPromise', () => {
         await wait();
         assert.equal(obj.status, ReactivePromiseStatus.Status.rejected);
     });
+    it('multi pending', async () => {
+        const obj = new ReactivePromiseStatus();
+        let symbol=Symbol();
+        obj.promise = Promise.resolve(symbol);
+        await wait();
+        assert.equal(obj.status, ReactivePromiseStatus.Status.resolved);
+        assert.equal(obj.data, symbol);
+        obj.promise = new Promise(()=>{});
+        await wait();
+        assert.equal(obj.status, ReactivePromiseStatus.Status.pending);
+        assert.equal(obj.data, null);
+    });
+    it('multi pending2', async () => {
+        const obj = new ReactivePromiseStatus(null, true);
+        let symbol=Symbol();
+        obj.promise = Promise.resolve(symbol);
+        await wait();
+        assert.equal(obj.status, ReactivePromiseStatus.Status.resolved);
+        assert.equal(obj.data, symbol);
+        obj.promise = new Promise(()=>{});
+        await wait();
+        assert.equal(obj.status, ReactivePromiseStatus.Status.resolved);
+        assert.equal(obj.data, symbol);
+    });
 });
 describe('data and error', () => {
     it('none', async () => {
