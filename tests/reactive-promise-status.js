@@ -160,6 +160,10 @@ describe('be promise itself', () => {
         const obj = new ReactivePromiseStatus(Promise.resolve(123));
         assert.equal(await obj, 123);
     });
+    it('await chain', async () => {
+        const obj = new ReactivePromiseStatus(Promise.resolve(123));
+        assert.equal(await obj.then(), 123);
+    });
     it('timeout', async () => {
         let result = null;
         let startTime = new Date();

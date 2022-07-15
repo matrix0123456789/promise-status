@@ -1,5 +1,7 @@
 import {Enum} from 'enumify-fork';
 
+require("@babel/polyfill");
+
 export default class ReactivePromiseStatus {
     constructor(promise = null, keepOld = false) {
         this.promise = promise;
@@ -48,20 +50,26 @@ export default class ReactivePromiseStatus {
 
     then(onResolve, onReject) {
         return new Promise(async (res, rej) => {
-            if (this.status == ReactivePromiseStatus.Status.resolved) {
+            if (this.status.name == ReactivePromiseStatus.Status.resolved.name) {
                 if (onResolve) {
                     try {
-                        let data2 = await onResolve(this.data)
+                        let data2 = onResolve(this.data)
+                        if (data2 && data2.then) {
+                             data2 = await data2;
+                        }
                         res(data2)
                     } catch (ex) {
                         rej(ex)
                     }
                 } else
                     res(this.data)
-            } else if (this.status == ReactivePromiseStatus.Status.rejected) {
+            } else if (this.status.name == ReactivePromiseStatus.Status.rejected.name) {
                 if (onReject) {
                     try {
-                        let data2 = await onReject(this.error)
+                        let data2 = onReject(this.error)
+                        if (data2 && data2.then) {
+                            data2 = await data2;
+                        }
                         res(data2)
                     } catch (ex) {
                         rej(ex)
@@ -79,7 +87,7 @@ export default class ReactivePromiseStatus {
                         }
                     })
                 else
-                    this._onReject.push(rej)
+                    this._onResolve.push(res)
                 if (onReject)
                     this._onReject.push(async error => {
                         try {
