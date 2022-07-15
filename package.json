@@ -1,6 +1,6 @@
 {
     "name": "reactive-promise-status",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "main": "dist/reactive-promise-status.js",
     "repository": "https://github.com/matrix0123456789/reactive-promise-status",
     "author": "Mateusz Krawczyk",
